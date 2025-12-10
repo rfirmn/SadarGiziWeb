@@ -1,0 +1,195 @@
+/* FILE: src/index.css */
+/* Stylesheet utama dengan TailwindCSS */
+/* Tema: biru, hitam, putih - dashboard modern */
+
+/* Import TailwindCSS base, components, dan utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles untuk seluruh aplikasi */
+@layer base {
+  /* Reset dan base styling */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Font Inter sebagai default */
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  /* Background default gelap */
+  body {
+    @apply bg-darker text-white min-h-screen;
+    transition: background-color 0.5s ease-in-out;
+  }
+  
+  /* Heading styles */
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+  
+  h3 {
+    @apply text-xl font-medium;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Button primary - biru */
+  .btn-primary {
+    @apply bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl
+           transition-all duration-200 transform hover:scale-105 active:scale-95
+           shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed
+           disabled:transform-none;
+  }
+  
+  /* Button secondary - outline */
+  .btn-secondary {
+    @apply border-2 border-secondary text-secondary hover:bg-secondary hover:text-white
+           font-semibold py-3 px-6 rounded-xl transition-all duration-200
+           transform hover:scale-105 active:scale-95;
+  }
+  
+  /* Button success - hijau */
+  .btn-success {
+    @apply bg-nutri-a hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl
+           transition-all duration-200 transform hover:scale-105 active:scale-95
+           shadow-lg hover:shadow-xl;
+  }
+  
+  /* Button danger - merah */
+  .btn-danger {
+    @apply bg-nutri-e hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl
+           transition-all duration-200 transform hover:scale-105 active:scale-95
+           shadow-lg hover:shadow-xl;
+  }
+  
+  /* Card container */
+  .card {
+    @apply bg-dark/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-6
+           shadow-xl transition-all duration-200 hover:border-gray-600;
+  }
+  
+  /* Glass effect card */
+  .card-glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6
+           shadow-2xl;
+  }
+  
+  /* Spinner loading */
+  .spinner {
+    @apply w-8 h-8 border-4 border-secondary border-t-transparent rounded-full
+           animate-spin;
+  }
+  
+  /* Large spinner */
+  .spinner-lg {
+    @apply w-16 h-16 border-4 border-secondary border-t-transparent rounded-full
+           animate-spin;
+  }
+  
+  /* Badge NutriScore */
+  .badge-nutri {
+    @apply inline-flex items-center justify-center w-16 h-16 rounded-full
+           text-3xl font-black text-white shadow-lg;
+  }
+  
+  /* NutriScore backgrounds */
+  .bg-score-a { @apply bg-nutri-a; }
+  .bg-score-b { @apply bg-nutri-b; }
+  .bg-score-c { @apply bg-nutri-c text-gray-900; }
+  .bg-score-d { @apply bg-nutri-d text-gray-900; }
+  .bg-score-e { @apply bg-nutri-e; }
+  
+  /* Container utama */
+  .container-app {
+    @apply max-w-4xl mx-auto px-4 py-8;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply text-gray-300 hover:text-white transition-colors duration-200
+           font-medium px-4 py-2 rounded-lg hover:bg-white/10;
+  }
+  
+  .nav-link-active {
+    @apply text-white bg-primary/30 font-medium px-4 py-2 rounded-lg;
+  }
+}
+
+/* Utility animations */
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Scale in animation */
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  /* Glow effect untuk NutriScore besar */
+  .glow-a { text-shadow: 0 0 40px rgba(27, 94, 32, 0.8); }
+  .glow-b { text-shadow: 0 0 40px rgba(102, 187, 106, 0.8); }
+  .glow-c { text-shadow: 0 0 40px rgba(255, 235, 59, 0.8); }
+  .glow-d { text-shadow: 0 0 40px rgba(255, 152, 0, 0.8); }
+  .glow-e { text-shadow: 0 0 40px rgba(229, 57, 53, 0.8); }
+}
+
+/* Camera video styling */
+video.camera-preview {
+  @apply w-full max-w-md rounded-2xl shadow-2xl border-4 border-gray-700;
+  transform: scaleX(-1); /* Mirror effect */
+}
+
+/* Image preview styling */
+img.image-preview {
+  @apply w-full max-w-md rounded-2xl shadow-2xl border-4 border-gray-700 object-contain;
+  max-height: 400px;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply h-2 bg-gray-700 rounded-full overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300;
+}
+
+/* Table styling untuk history */
+.table-history {
+  @apply w-full text-left border-collapse;
+}
+
+.table-history th {
+  @apply bg-dark/50 text-gray-300 font-semibold py-3 px-4 border-b border-gray-700;
+}
+
+.table-history td {
+  @apply py-3 px-4 border-b border-gray-800;
+}
+
+.table-history tr:hover td {
+  @apply bg-dark/30;
+}

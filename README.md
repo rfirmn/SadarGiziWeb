@@ -4,7 +4,7 @@ Anda bisa menyalin kode di bawah ini dan menyimpannya sebagai `README.md` di roo
 
 -----
 
-# 🥗 NutriScan AI - Web Nutri-Score 
+# 🥗 NutriScan AI - Web Nutrition-Score 
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TensorFlow.js](https://img.shields.io/badge/TensorFlow.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)

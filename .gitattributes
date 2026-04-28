@@ -1,1 +1,2 @@
 public/my_model/my_model.onnx filter=lfs diff=lfs merge=lfs -text
+frontend/public/my_model/*.onnx filter=lfs diff=lfs merge=lfs -text

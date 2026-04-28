@@ -1,0 +1,18 @@
+node_modules/
+logs/
+*.log
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Env files
+.env
+.env.test
+
+# Models
+models/*.onnx
+!models/.gitkeep
+
+# OS Files
+.DS_Store

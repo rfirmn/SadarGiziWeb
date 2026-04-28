@@ -1,81 +1,46 @@
-Tentu, berikut adalah draf **README.md** yang profesional, lengkap, dan terstruktur untuk proyek web Nutri-Score Anda. README ini dirancang untuk menonjolkan penggunaan teknologi **YOLOv8 OBB (Oriented Bounding Box)** yang merupakan fitur kunci proyek Anda.
+# NutriScan AI - Full-Stack Web Application
 
-Anda bisa menyalin kode di bawah ini dan menyimpannya sebagai `README.md` di root folder proyek Anda.
+NutriScan adalah aplikasi cerdas berbasis web yang menganalisis label informasi nilai gizi (Nutrition Facts) dari foto kemasan makanan, memberikan informasi detail, dan menghitung Nutri-Score secara instan. 
 
------
+Proyek ini telah direfaktor menjadi arsitektur **Full-Stack (Client-Server)** untuk skalabilitas dan performa yang lebih baik.
 
-# 🥗 NutriScan AI - Web Nutrition-Score 
+## Arsitektur Sistem
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TensorFlow.js](https://img.shields.io/badge/TensorFlow.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![YOLOv8](https://img.shields.io/badge/YOLOv8-OBB-00FFFF?style=for-the-badge&logo=yolo&logoColor=black)
-![Tesseract.js](https://img.shields.io/badge/Tesseract.js-OCR-blue?style=for-the-badge)
+Aplikasi ini dipisahkan menjadi dua entitas utama:
 
-Aplikasi web cerdas untuk menghitung **Nutri-Score** (A-E) pada produk makanan secara otomatis. Menggunakan kecerdasan buatan berbasis **YOLOv8 OBB (Oriented Bounding Box)** untuk deteksi objek presisi dan **Tesseract.js** untuk pengenalan teks (OCR), semuanya berjalan langsung di browser (Client-Side).
+1. **Frontend (React + Vite)**: Berperan sebagai User Interface. Bertanggung jawab atas interaksi pengguna (kamera/upload gambar) dan menampilkan hasil secara dinamis.
+2. **Backend (Node.js + Express)**: Berperan sebagai API dan AI Engine. Bertanggung jawab memproses gambar (AI Inference dengan YOLOv8 ONNX + Tesseract OCR), mengelola autentikasi (JWT), dan menyimpan riwayat di database (MySQL).
 
----
+## Cara Menjalankan Aplikasi Secara Lokal
 
----
+### Prasyarat
+- Node.js v18+
+- MySQL 8.0+
 
-## 🚀 Fitur Utama
-
-* **Deteksi Nutrisi Presisi (OBB):** Menggunakan model YOLOv8 Oriented Bounding Box untuk mendeteksi label nutrisi yang miring atau terdistorsi dengan lebih akurat dibandingkan bounding box standar.
-* **Client-Side Inference:** Model AI berjalan sepenuhnya di browser menggunakan TensorFlow.js. Tidak ada gambar yang diunggah ke server (Privasi terjaga).
-* **OCR Otomatis:** Ekstraksi angka nutrisi (Energi, Gula, Lemak, Garam, dll) menggunakan Tesseract.js.
-* **Kalkulasi Nutri-Score:** Algoritma perhitungan Nutri-Score otomatis berdasarkan standar kesehatan (Simplified Algorithm).
-* **Smart Cleaning:** Algoritma pembersihan data untuk memastikan angka yang dibaca valid.
-
----
-
-## 🛠️ Tech Stack
-
-* **Frontend:** [React.js](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **AI Model:** [Ultralytics YOLOv8 (OBB)](https://github.com/ultralytics/ultralytics)
-* **ML Runtime:** [TensorFlow.js](https://www.tensorflow.org/js)
-* **OCR Engine:** [Tesseract.js](https://github.com/naptha/tesseract.js)
-
----
-
-## 📦 Instalasi & Menjalankan Project
-
-Ikuti langkah-langkah ini untuk menjalankan proyek di komputer lokal Anda:
-
-### 1. Clone Repository
+### 1. Persiapan Database
+Buat database dan tabel menggunakan skema yang disediakan.
 ```bash
-git clone [https://github.com/username-anda/nutriscan-ai.git](https://github.com/username-anda/nutriscan-ai.git)
-cd nutriscan-ai
+mysql -u root -p < database/schema.sql
 ```
+*(Atau jalankan `npm run migrate` di folder `backend` setelah setup `.env`)*
 
-### 2\. Install Dependencies
-
-Pastikan Anda sudah menginstall [Node.js](https://nodejs.org/).
-
+### 2. Setup Backend
+Masuk ke folder `backend`, install dependensi, dan sesuaikan file environment.
 ```bash
+cd backend
 npm install
-```
-
-### 3\. Siapkan Model AI
-
-Proyek ini membutuhkan model YOLOv8 yang sudah dikonversi ke format TFJS.
-
-1.  Letakkan folder model Anda (berisi `model.json` dan file `.bin`) di dalam folder `public/`.
-2.  Struktur folder harus terlihat seperti ini:
-    ```
-    public/
-    ├── my_model/
-    │   ├── model.json
-    │   ├── group1-shard1of4.bin
-    │   └── ...
-    ```
-
-### 4\. Jalankan Server Development
-
-```bash
+cp .env.example .env  # (Buat file .env dan isi kredensial MySQL Anda)
 npm run dev
 ```
+*Backend akan berjalan di `http://localhost:5001`*
 
-Buka browser dan akses `http://localhost:5173`.
+### 3. Setup Frontend
+Buka terminal baru, masuk ke folder `frontend`, install dependensi, dan jalankan dev server.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 -----
 
